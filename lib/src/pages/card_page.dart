@@ -11,9 +11,9 @@ class CardPage extends StatelessWidget {
       body: ListView(
         padding: EdgeInsets.all(10),
         children: [
-          _cardTipo1(),
+          _cardTipo1(context),
           SizedBox(
-            height: 30,
+            height: 20,
           ),
           _cardTipo2(),
         ],
@@ -21,7 +21,7 @@ class CardPage extends StatelessWidget {
     );
   }
 
-  Widget _cardTipo1() {
+  Widget _cardTipo1(BuildContext context){
     return Card(
       shadowColor: Colors.blue[300],
       elevation: 5,
@@ -42,7 +42,7 @@ class CardPage extends StatelessWidget {
                 child: Text("Cancelar")
               ),
               TextButton(
-                onPressed: null, 
+                onPressed: () => _mostrarImagen(context),
                 child: Text("Ok")
               ),
             ],
@@ -80,6 +80,29 @@ class CardPage extends StatelessWidget {
             ),
           ],
         ),
+    );
+  }
+
+  _mostrarImagen(BuildContext context) {
+    showDialog(
+      context: context, 
+      barrierDismissible: true,
+      builder: (context){
+        
+        return AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          content: 
+            Image(
+              image: AssetImage("assets/BanderaEspaña.png"),
+              height: 187,
+               
+              //fit: BoxFit.cover,
+            ),
+            clipBehavior: Clip.antiAlias,
+            contentPadding: EdgeInsets.all(0),
+        );
+      },
+      
     );
   }
 }

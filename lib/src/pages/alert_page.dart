@@ -11,7 +11,7 @@ class AlertPage extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () => _mostrarAlert(context), 
-          child: Text("Mostrar Alerta"),
+          child: Text("Mostrar Alerta",style: TextStyle(fontSize: 20)),
           style: ElevatedButton.styleFrom(
             primary: Colors.blue,
             shape: StadiumBorder()
@@ -47,7 +47,7 @@ class AlertPage extends StatelessWidget {
           actions: [
             TextButton(
               child: Text("Cancelar"),
-              onPressed: () => Navigator.of(context).pop(), 
+              onPressed: () => Navigator.pushNamed(context, '/'), 
             ),
             TextButton(
               child: Text("Ok"),
