@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AvatarPage extends StatelessWidget {
+class AvatarPage extends StatefulWidget {
+
+  @override
+  State<AvatarPage> createState() => _AvatarPageState();
+}
+
+class _AvatarPageState extends State<AvatarPage> {
+  String url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmXTlg6H7mBTxWWKnXB708KlCv-oRlPrlXOA&usqp=CAU";
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +17,9 @@ class AvatarPage extends StatelessWidget {
         actions: [
           GestureDetector(
             onTap: (){
-              _mostrarImagen(context);
+              setState(() {
+                url = "https://i.blogs.es/85aa44/stan-lee/450_1000.jpg";
+              });
             },
             child: Container(
               padding: EdgeInsets.all(5),
@@ -22,7 +31,9 @@ class AvatarPage extends StatelessWidget {
           ),
           GestureDetector(
             onTap: (){
-              Navigator.pushNamed(context, '/');
+              setState(() {
+                url = "https://www.estudiadeporte.com/wp-content/uploads/ies-jandula-estudia-deporte.jpg";
+              });
             },
             child: Container(
               padding: EdgeInsets.all(5),
@@ -39,7 +50,8 @@ class AvatarPage extends StatelessWidget {
       body: Center(
         child: FadeInImage(
           placeholder: AssetImage("assets/jar-loading.gif"), 
-          image: NetworkImage("https://www.estudiadeporte.com/wp-content/uploads/ies-jandula-estudia-deporte.jpg"))
+          image: NetworkImage(url)
+          ),
       ),
       
       floatingActionButton: FloatingActionButton(
@@ -61,7 +73,7 @@ class AvatarPage extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           content: 
             Image(
-              image: NetworkImage("https://i.blogs.es/85aa44/stan-lee/450_1000.jpg"),
+              image: NetworkImage(url),
               height: 200,
                
               //fit: BoxFit.cover,
